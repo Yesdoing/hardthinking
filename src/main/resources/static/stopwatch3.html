@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <style>
+        #output {
+            font-size: 5em;
+        }
+
+        row .nav-string p {
+            margin-bottom: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <div class="logo-wrap">
+                    <img src="idea.png" alt="logo" class="logo"> 몰입 - 인생의 즐거움
+                </div>
+            </a>
+
+            <div class="row float-right">
+                <div class="col">
+                    <a class="btn btn-info" href="#" role="button">로그인</a>
+                </div>
+                <div class="col">
+                    <a class="btn btn-info" href="#" role="button">회원가입</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-sm-8" style="padding-left: 45px;">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Subject</h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <p id="output">00:00:00</p>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="btn-group" role="group" style="padding-top: 2rem;">
+                        <button type="button" class="btn btn-primary" id="startPause" onclick="startPause()">Start</button>
+                        <button type="button" class="btn btn-primary" onclick="reset()">Reset</button>
+                        <button type="button" class="btn btn-primary" onclick="lap()">Lap</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row justify-content-center" style="padding-top:1rem;">
+                    <h3>Labs</h3>
+                </div>
+                <div class="row justify-content-center" data-spy="scroll" style="position:relative; height:600px; overflow:auto;">
+                    <ul class="list-group" style="width:20em;" id="records">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col"><span>Hello World</span></div>
+                                <div class="col"><a href="#" class="float-right">Delete</a></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var time = 0;
+        var recordNum = 0;
+        var running = 0;
+        var labs = [];
+        function startPause() {
+            if (running == 0) {
+                running = 1;
+                increment();
+                document.getElementById('startPause').innerHTML = "Pause";
+            } else {
+                running = 0;
+                document.getElementById("startPause").innerHTML = "Resume";
+            }
+        }
+
+        function reset() {
+            running = 0;
+            time = 0;
+            document.getElementById('startPause').innerHTML = "Start";
+            document.getElementById('output').innerHTML = "00:00:00";
+        }
+
+        function increment() {
+            if (running == 1) {
+                setTimeout(function () {
+                    time++;
+                    var mins = Math.floor(time / 10 / 60);
+                    var secs = Math.floor(time / 10);
+                    var tenths = time % 10;
+
+                    if (mins < 10) {
+                        mins = "0" + mins;
+                    }
+                    if (secs < 10) {
+                        secs = "0" + secs;
+                    }
+
+                    document.getElementById('output').innerHTML = mins + " : " + secs + " : " + "0" + tenths;
+                    increment();
+                }, 100);
+            }
+        }
+
+        function lap() {
+            document.getElementById('records').innerHTML += "<li class='list-group-item'>" + "#" + recordNum++ + " " + document.getElementById('output').innerHTML + "</li>";
+        }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
