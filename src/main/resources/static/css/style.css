@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+body {
+	padding-bottom: 40px;
+	background-color: #ffffff;
+}
+
+.form-signin {
+	max-width: 400px;
+	padding: 30px;
+	margin: 0 auto;
+	border: 1px solid #eee;
+}
+
+.form-signin .form-signin-heading, .form-signin .checkbox {
+	margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+	font-weight: normal;
+}
+
+.form-signin .form-control {
+	position: relative;
+	height: auto;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+	z-index: 2;
+}
+
+.form-signin input[type="email"] {
+	margin-bottom: -1px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+	margin-bottom: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.form-signin .btn {
+	margin-right: 10px;
+}
+
+.navbar {
+	margin-bottom: 80px;
+}
+
+.navbar .container-fluid .row .col {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.btn {
+	width: 80px;
+}
+
+.card {
+	margin: 10px;
+}
+
+#insert {
+	position: fixed;
+	left: 85%;
+	top: 85%;
+	border-radius: 10%;
+}
